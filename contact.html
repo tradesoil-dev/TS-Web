@@ -148,18 +148,27 @@ function toggleMenu(){var h=document.getElementById('hamburger');var m=document.
       message:     form.message.value.trim()
     };
 
+    // 1. Save to Supabase
     var result = await client.from('contact_submissions').insert([data]);
 
     if (result.error) {
       showMsg('Something went wrong. Please email us directly at info@tradesoil.com', false);
       btn.disabled = false;
       btn.textContent = 'Send enquiry →';
-    } else {
-      showMsg('Enquiry received. We\'ll get back to you within 24 hours.', true);
-      form.reset();
-      btn.disabled = false;
-      btn.textContent = 'Send enquiry →';
+      return;
     }
+
+    // 2. Trigger email via Edge Function
+    await fetch(SB_URL + '/functions/v1/notify-rfq', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
+      body: JSON.stringify({ record: data })
+    });
+
+    showMsg('Enquiry received. We\'ll get back to you within 24 hours.', true);
+    form.reset();
+    btn.disabled = false;
+    btn.textContent = 'Send enquiry →';
   });
 })();
 </script>
