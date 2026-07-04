@@ -35,18 +35,18 @@
   color: rgba(255,255,255,0.45); font-size: 14px; font-family: inherit;
   text-align: left; transition: border-color 0.2s, background 0.2s;
 }
-.cs-trigger:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.09); }
+.cs-trigger:hover { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.09); }
 .cs-trigger.has-value { color: #fff; }
-.cs-trigger[aria-expanded="true"] { border-color: #1D9E75; background: rgba(29,158,117,0.08); }
+.cs-trigger[aria-expanded="true"] { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.09); }
 
-.cs-arrow { flex-shrink: 0; color: rgba(255,255,255,0.4); transition: transform 0.2s; }
-.cs-trigger[aria-expanded="true"] .cs-arrow { transform: rotate(180deg); color: #1D9E75; }
+.cs-arrow { flex-shrink: 0; color: rgba(255,255,255,0.35); transition: transform 0.2s; }
+.cs-trigger[aria-expanded="true"] .cs-arrow { transform: rotate(180deg); }
 
 .cs-list {
   position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 200;
-  background: #0f2318; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+  background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
   overflow: hidden; list-style: none; padding: 6px;
-  box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.3);
   opacity: 0; transform: translateY(-6px); pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease;
 }
@@ -55,17 +55,17 @@
 .cs-list li {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 14px; border-radius: 8px; cursor: pointer;
-  font-size: 13px; color: rgba(255,255,255,0.65);
+  font-size: 13px; color: rgba(255,255,255,0.6);
   transition: background 0.12s, color 0.12s;
 }
-.cs-list li:hover { background: rgba(29,158,117,0.15); color: #fff; }
-.cs-list li.selected { background: rgba(29,158,117,0.2); color: #fff; }
-.cs-list li.selected .cs-code { background: #1D9E75; color: #fff; }
+.cs-list li:hover { background: rgba(255,255,255,0.07); color: #fff; }
+.cs-list li.selected { background: rgba(255,255,255,0.1); color: #fff; }
+.cs-list li.selected .cs-code { background: rgba(255,255,255,0.2); color: #fff; }
 
 .cs-code {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 42px; padding: 2px 7px; border-radius: 5px;
-  background: rgba(29,158,117,0.15); color: #1D9E75;
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5);
   font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
   flex-shrink: 0;
 }
