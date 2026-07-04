@@ -102,6 +102,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .sr .sk{color:var(--t3)}
 .sr .sv{font-weight:500;color:var(--t)}
 .cg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.leader-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:860px}
 .cs2{border:1px solid var(--bd);border-radius:var(--rl);padding:2rem}
 .cs2 h3{font-size:15px;font-weight:600;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
 .cl{display:flex;flex-direction:column;gap:8px}
@@ -118,7 +119,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .pgl li{font-size:14px;color:var(--t2);display:flex;align-items:flex-start;gap:10px;line-height:1.55}
 .pgl li i{font-size:15px;flex-shrink:0;margin-top:1px;color:var(--green)}
 .cta-wrap{padding:1rem}
-.cta-block{background:var(--t);border-radius:var(--rx);padding:2.5rem 3rem;text-align:center;position:relative;overflow:hidden}
+.cta-block{background:var(--t);border-radius:var(--rx);padding:2.5rem 3rem;text-align:center;position:relative;overflow:visible}
 .cta-block::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(ellipse,rgba(29,158,117,0.22) 0%,transparent 70%);pointer-events:none}
 .cta-block h2{font-size:38px;font-weight:400;color:#fff;letter-spacing:-0.8px;margin-bottom:0.75rem}
 .cta-block p{font-size:16px;color:rgba(255,255,255,0.5);margin-bottom:2.5rem}
@@ -156,6 +157,30 @@ footer{border-top:1px solid var(--bd);padding:2rem 2.5rem 1.5rem}
 .mobile-menu a.active{color:var(--green);font-weight:500;background:var(--gl)}
 .mobile-menu .mob-cta{background:var(--t);color:#fff;border:none;border-radius:8px;padding:12px 14px;font-size:15px;font-weight:500;cursor:pointer;font-family:inherit;text-align:left;margin-top:4px}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.el-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:300;align-items:center;justify-content:center;padding:1.5rem}
+.el-overlay.open{display:flex}
+.el-modal{background:#fff;border-radius:var(--rx);max-width:500px;width:100%;overflow:hidden;animation:fadeIn 0.3s ease}
+.el-top{background:var(--t);padding:1.5rem 1.75rem 1.25rem;position:relative}
+.el-from{font-size:11px;font-weight:500;color:var(--gm);letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:0.75rem}
+.el-logo{display:flex;align-items:center;gap:10px;margin-bottom:0.5rem}
+.el-sq{width:26px;height:26px;background:var(--green);border-radius:6px;flex-shrink:0;display:block}
+.el-name{font-size:22px;font-weight:300;color:#fff;letter-spacing:-0.4px}
+.el-name .el-lead{color:var(--green);font-weight:600}
+.el-name .el-os{color:rgba(255,255,255,0.35)}
+.el-tag{font-size:13px;color:rgba(255,255,255,0.4);margin-top:2px}
+.el-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.45);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;line-height:1;transition:all 0.15s}
+.el-close:hover{background:rgba(255,255,255,0.2);color:#fff}
+.el-body{padding:1.25rem 1.75rem 1.5rem}
+.el-desc{font-size:14px;color:var(--t2);line-height:1.75;margin-bottom:1rem}
+.el-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem}
+.el-list li{font-size:13px;color:var(--t2);display:flex;align-items:center;gap:8px}
+.el-list li i{font-size:15px;color:var(--green);flex-shrink:0}
+.el-actions{display:flex;align-items:center;gap:14px}
+.el-skip{background:none;border:none;font-size:13px;color:var(--t3);cursor:pointer;font-family:inherit;padding:0;transition:color 0.15s}
+.el-skip:hover{color:var(--t)}
+.el-nav{background:var(--gl)!important;color:var(--gd)!important;font-weight:500!important;display:inline-flex!important;align-items:center;gap:4px}
+.el-nav:hover{background:#c5e8d8!important;color:var(--gd)!important}
+.el-nav i{font-size:12px}
 @media(max-width:720px){
   .hero h1{font-size:34px}
   .hero h1 .serif{font-size:40px}
@@ -163,9 +188,10 @@ footer{border-top:1px solid var(--bd);padding:2rem 2.5rem 1.5rem}
   .nav-links{display:none}
   .nav-right .btn-nav{display:none}
   .hamburger{display:flex}
-  .fg,.pgrid,.pg,.cg,.ai-inner,.cfg{grid-template-columns:1fr}
+  .fg,.pgrid,.pg,.cg,.ai-inner,.cfg,.leader-grid{grid-template-columns:1fr}
   .stats-bar{flex-direction:column}
-  .fg2{grid-template-columns:1fr 1fr;gap:2rem}
+  .fg2{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .footer-brand{grid-column:1/-1}
   .ws{grid-template-columns:50px 1fr}
   .wt{display:none}
 }
