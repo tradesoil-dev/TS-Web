@@ -161,6 +161,8 @@ nav {
   position: relative; z-index: 2; will-change: opacity;
   display: flex; gap: 0;
   border-top: 1px solid rgba(29,158,117,0.15);
+  background: rgba(255,255,255,0.88); backdrop-filter: blur(6px);
+  border-radius: 16px;
   margin-top: 60px;
 }
 .hero-stat {
@@ -361,6 +363,7 @@ footer {
   footer { padding: 48px 24px 28px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .footer-brand { grid-column: 1 / -1; }
+  .footer-grid .fcol:last-child { grid-column: 1 / -1; }
   .fbot { flex-direction: column; gap: 6px; }
 }
 
