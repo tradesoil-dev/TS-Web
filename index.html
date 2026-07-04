@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Tradesoil International — Raw Material Sourcing & Trade Consulting</title>
-<meta name="description" content="Tradesoil International is a global raw material sourcing and trade consulting company. We supply oleochemicals, biodiesel feedstocks, FAME, POME, UCO, crude glycerin, dimer acid and more — sourced from verified Asia suppliers across Malaysia, Indonesia, China and South Korea."/>
-<meta name="keywords" content="oleochemical sourcing, biodiesel feedstock supplier, FAME supplier, POME supplier, UCO supplier, crude glycerin supplier, dimer acid supplier, mixed fatty acid MFA, soybean oil fatty acid, co-processed oil, raw material sourcing Asia, trade consulting Sri Lanka, oleochemical trading, biodiesel feedstock Europe, UCO double count EU, ISCC certified feedstock, raw material supplier Malaysia, commodity sourcing consultant, Tradesoil International"/>
+<meta name="description" content="Tradesoil International is a global raw material sourcing and trade consulting company. We supply oleochemicals, biodiesel feedstocks, FAME, POME, UCO, crude glycerin, dimer acid and more, sourced from verified Asia suppliers."/>
+<meta name="keywords" content="oleochemical sourcing, biodiesel feedstock supplier, FAME supplier, POME supplier, UCO supplier, crude glycerin supplier, raw material sourcing Asia, trade consulting Sri Lanka"/>
 <meta name="author" content="Tradesoil International"/>
 <meta name="robots" content="index, follow"/>
 <meta property="og:title" content="Tradesoil International — Raw Material Sourcing & Trade Consulting"/>
@@ -15,121 +15,621 @@
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Tradesoil International — Raw Material Sourcing & Trade Consulting"/>
-<meta name="twitter:description" content="Connecting buyers and suppliers of oleochemicals and biodiesel feedstocks with AI-powered pricing intelligence."/>
+<meta name="twitter:description" content="We connect buyers and suppliers of oleochemicals and biodiesel feedstocks with AI-powered pricing intelligence and a verified Asia sourcing network."/>
 <meta name="twitter:image" content="https://www.tradesoil.com/thumbnail.png"/>
 <link rel="canonical" href="https://www.tradesoil.com/"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" href="/favicon.ico"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
-<link rel="stylesheet" href="style.css"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; color: #0d1117; background: #fff; overflow-x: hidden; }
+
+/* ── VARIABLES ── */
+:root {
+  --g: #1D9E75;
+  --g-light: rgba(29,158,117,0.1);
+  --g-border: rgba(29,158,117,0.2);
+  --text: #0d1117;
+  --muted: rgba(13,17,23,0.45);
+  --border: rgba(13,17,23,0.08);
+}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px; height: 64px;
+  background: rgba(240,250,246,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--g-border);
+}
+.logo { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); text-decoration: none; }
+.logo em { color: var(--g); font-style: normal; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-links a.el { color: var(--g); }
+.nav-cta { padding: 8px 20px; background: var(--g); color: #fff; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 6px; }
+.nav-cta:hover { background: #178f6a; }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile drawer */
+.mobile-menu {
+  display: none; flex-direction: column;
+  position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+  background: rgba(240,250,246,0.97); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--g-border);
+  padding: 16px 24px 24px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 15px; color: var(--text); text-decoration: none; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.mobile-menu a.el { color: var(--g); }
+.mobile-menu a.mob-cta { margin-top: 12px; background: var(--g); color: #fff; text-align: center; border-radius: 6px; padding: 12px; border: none; font-weight: 600; }
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 48px 100px;
+  background: radial-gradient(ellipse 100% 90% at 0% 0%, #8dd5ba 0%, #b5e3d0 18%, #d0efe3 38%, #e8f8f2 60%, #f6fdf9 100%);
+  overflow: hidden;
+  will-change: transform;
+}
+.hero-inner { will-change: transform, opacity; transition: none; }
+.hero-stats  { will-change: opacity; transition: none; }
+
+.hero-inner { position: relative; z-index: 2; max-width: 860px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 3px; color: var(--g); text-transform: uppercase;
+  background: rgba(29,158,117,0.1); border: 1px solid rgba(29,158,117,0.2);
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 32px;
+}
+.hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(64px, 7.5vw, 110px);
+  font-weight: 700; line-height: 0.92; letter-spacing: -2px;
+  color: var(--text); margin-bottom: 28px;
+  white-space: nowrap;
+}
+.hero-h1 em { color: var(--g); font-style: normal; }
+.hero-sub {
+  font-size: 18px; color: #2a4a3a; line-height: 1.75;
+  max-width: 620px; margin: 0 auto 52px; font-weight: 300;
+}
+.hero-btns { display: flex; gap: 12px; justify-content: center; margin-bottom: 64px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--g); color: #fff; font-size: 15px; font-weight: 600;
+  padding: 14px 32px; border-radius: 8px; text-decoration: none;
+}
+.btn-primary:hover { background: #178f6a; }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1.5px solid rgba(29,158,117,0.4); color: var(--g); font-size: 15px; font-weight: 500;
+  padding: 14px 28px; border-radius: 8px; text-decoration: none; background: rgba(29,158,117,0.05);
+}
+.btn-outline:hover { background: rgba(29,158,117,0.12); }
+
+.hero-stats {
+  position: relative; z-index: 2;
+  display: flex; gap: 0; border: 1px solid rgba(29,158,117,0.2);
+  border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(8px);
+}
+.hero-stat {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 20px 16px; border-right: 1px solid rgba(29,158,117,0.1);
+  text-align: center;
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-n { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+.hero-stat-l { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #2a4a3a; margin-top: 4px; }
+
+/* ══════════════════════════════════════
+   STATS + PRICE BAND
+══════════════════════════════════════ */
+.stats-price {
+  display: grid; grid-template-columns: 1fr 1fr 2fr;
+  border-top: 1px solid var(--border);
+  background: #0d1f18;
+}
+.stat-cell {
+  padding: 40px 48px; border-right: 1px solid rgba(255,255,255,0.06);
+}
+.stat-n { font-family: 'Barlow Condensed', sans-serif; font-size: 56px; font-weight: 700; color: var(--g); line-height: 1; margin-bottom: 6px; }
+.stat-l { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.stat-l strong { display: block; font-weight: 500; color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 2px; }
+
+.price-ey { font-size: 9px; color: rgba(29,158,117,0.5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+.prow { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.prow:last-of-type { border-bottom: none; }
+.pname { font-size: 13px; color: rgba(255,255,255,0.55); }
+.pright { display: flex; align-items: baseline; gap: 6px; }
+.pval  { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 600; color: #fff; }
+.punit { font-size: 11px; color: rgba(255,255,255,0.3); }
+.tup   { font-size: 11px; color: #4ade9a; }
+.tdn   { font-size: 11px; color: #f87171; }
+.tfl   { font-size: 11px; color: rgba(255,255,255,0.3); }
+.pcta  { display: block; margin-top: 18px; font-size: 12px; color: var(--g); text-decoration: none; }
+.pcta:hover { text-decoration: underline; }
+.pnote { font-size: 10px; color: rgba(255,255,255,0.2); margin-top: 12px; line-height: 1.6; }
+
+/* ══════════════════════════════════════
+   SHARED SECTION
+══════════════════════════════════════ */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 3px; color: var(--g); text-transform: uppercase;
+  border: 1px solid var(--g-border); padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+}
+.sec-h {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 4vw, 54px); font-weight: 700; line-height: 1.0;
+  color: var(--text); margin-bottom: 18px;
+}
+.sec-h em { color: var(--g); font-style: normal; }
+.sec-p { font-size: 15px; color: #2a4a3a; line-height: 1.8; max-width: 580px; font-weight: 300; margin-bottom: 48px; }
+
+section { padding: 80px 64px; }
+.sec-g  { background: linear-gradient(180deg, #f0faf6 0%, #e4f5ee 100%); }
+.sec-gg { background: linear-gradient(180deg, #e4f5ee 0%, #d6f0e8 100%); }
+.sec-w  { background: #fff; }
+
+/* ══════════════════════════════════════
+   WHO WE WORK WITH
+══════════════════════════════════════ */
+.who-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.who-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 24px; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.who-card:hover { border-color: var(--g); border-left: 3px solid var(--g); background: rgba(29,158,117,0.05); box-shadow: 0 6px 24px rgba(29,158,117,0.12); }
+.who-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.who-body  { font-size: 13px; color: #2a4a3a; line-height: 1.7; font-weight: 400; }
+
+/* ══════════════════════════════════════
+   WHAT WE DO
+══════════════════════════════════════ */
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+.svc-card {
+  border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.svc-card:hover { border-color: var(--g); box-shadow: 0 6px 24px rgba(29,158,117,0.1); }
+.svc-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 20px; }
+.svc-icon.g { background: rgba(29,158,117,0.12); color: var(--g); }
+.svc-icon.b { background: rgba(59,130,246,0.1); color: #3b82f6; }
+.svc-icon.o { background: rgba(249,115,22,0.1); color: #f97316; }
+.svc-icon.p { background: rgba(168,85,247,0.1); color: #a855f7; }
+.svc-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.svc-body  { font-size: 13px; color: #2a4a3a; line-height: 1.7; font-weight: 400; }
+
+/* ══════════════════════════════════════
+   HOW WE WORK
+══════════════════════════════════════ */
+.steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  position: relative;
+}
+.steps::before {
+  content: ''; position: absolute;
+  top: 24px; left: calc(12.5% + 16px); right: calc(12.5% + 16px);
+  height: 1px; background: linear-gradient(to right, var(--g), rgba(29,158,117,0.2));
+  z-index: 0;
+}
+.step { position: relative; z-index: 1; }
+.stepnum {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--g); color: #fff;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.steptitle { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.stepbody  { font-size: 12px; color: #2a4a3a; line-height: 1.7; font-weight: 400; margin-bottom: 14px; }
+.steptag { display: inline-block; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; padding: 3px 10px; border-radius: 20px; }
+.steptag.n { background: rgba(13,17,23,0.07); color: var(--text); }
+.steptag.g { background: rgba(29,158,117,0.12); color: var(--g); }
+.steptag.b { background: rgba(59,130,246,0.1); color: #3b82f6; }
+
+/* ══════════════════════════════════════
+   EXPOLEAD STRIP
+══════════════════════════════════════ */
+.el-strip {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  background: #0d1117; padding: 48px 64px;
+}
+.el-from { font-size: 10px; color: rgba(29,158,117,0.6); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+.el-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.el-sq   { width: 14px; height: 14px; background: var(--g); border-radius: 3px; flex-shrink: 0; }
+.el-name { font-size: 22px; font-weight: 600; color: #fff; }
+.el-name span { color: var(--g); }
+.el-desc { font-size: 13px; color: rgba(255,255,255,0.4); max-width: 380px; line-height: 1.7; }
+.el-btn  { flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; background: var(--g); color: #fff; font-size: 14px; font-weight: 600; padding: 14px 26px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
+.el-btn:hover { background: #178f6a; }
+
+/* ══════════════════════════════════════
+   CTA
+══════════════════════════════════════ */
+.cta-section {
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, #c8e8de 0%, #e0f3ec 40%, #f0faf6 100%);
+  text-align: center; padding: 100px 48px;
+}
+.cta-section .sec-h { font-size: clamp(36px, 4vw, 52px); margin-bottom: 16px; }
+.cta-section p { font-size: 15px; color: #2a4a3a; margin-bottom: 40px; font-weight: 300; }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer {
+  background: #0d1117; padding: 60px 64px 32px; color: rgba(255,255,255,0.6);
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: #fff; text-decoration: none; display: block; margin-bottom: 12px; }
+.footer-logo em { color: var(--g); font-style: normal; }
+.footer-brand p { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.75; max-width: 260px; }
+.fcol h5 { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+.fcol a  { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 10px; }
+.fcol a:hover { color: #fff; }
+.fbot { display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 11px; color: rgba(255,255,255,0.2); }
+
+/* ══════════════════════════════════════
+   MOBILE
+══════════════════════════════════════ */
+@media(max-width:900px){
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .hero { padding: 100px 24px 90px; min-height: 100svh; }
+  .hero-h1 { font-size: clamp(44px,10vw,72px); white-space: normal; letter-spacing: -1px; }
+  .hero-sub { font-size: 14px; }
+  .hero-eyebrow { font-size: 10px; padding: 5px 12px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+
+  .hero-stats { flex-wrap: wrap; }
+  .hero-stat { flex: 1 1 33%; border-bottom: 1px solid rgba(29,158,117,0.1); padding: 14px 0; }
+  .hero-stat:nth-child(3) { border-right: none; }
+  .hero-stat-n { font-size: 22px; }
+  .hero-stat-l { font-size: 9px; }
+
+  .stats-price { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 28px 24px; }
+  .stat-cell:last-child { border-bottom: none; }
+
+  section { padding: 52px 24px; }
+
+  .who-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .svc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .steps { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .steps::before { display: none; }
+  .step { padding: 0; text-align: center; }
+  .stepnum { margin: 0 auto 16px; }
+
+  .el-strip { flex-direction: column; align-items: flex-start; padding: 40px 24px; gap: 20px; }
+  .el-btn { width: 100%; justify-content: center; }
+
+  .cta-section { padding: 64px 24px; }
+
+  footer { padding: 48px 24px 28px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .fbot { flex-direction: column; gap: 6px; }
+}
+
+@media(max-width:540px){
+  .hero-h1 { font-size: clamp(38px,11vw,56px); }
+  .who-grid { grid-template-columns: 1fr; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .hero-stat { flex: 1 1 50%; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
+
+<!-- ══ NAV ══ -->
 <nav>
-  <a class="logo" href="index.html">trade<span>soil</span></a>
+  <a class="logo" href="index.html">trad<em>e</em>soil</a>
   <div class="nav-links">
     <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
     <a href="products.html">Products</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
+    <a href="https://expolead.tradesoil.com/" target="_blank" class="el">ExpoLead OS <i class="ti ti-external-link" style="font-size:11px"></i></a>
   </div>
-  <div class="nav-right">
-    <a href="contact.html" class="btn-nav">Get in touch</a>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <a class="nav-cta" href="contact.html">Get in touch</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
-  <a href="index.html" class="active">Home</a>
+  <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="products.html">Products</a>
   <a href="services.html">Services</a>
   <a href="contact.html">Contact</a>
+  <a href="https://expolead.tradesoil.com/" target="_blank" class="el">ExpoLead OS <i class="ti ti-external-link" style="font-size:11px"></i></a>
   <a href="contact.html" class="mob-cta">Get in touch →</a>
 </div>
 
-<div class="hero">
-  <div class="hero-badge"><i class="ti ti-circle-check"></i> Oleochemicals &middot; Biodiesel feedstocks &middot; Verified Asia network</div>
-  <h1>Global raw material trade,<br>powered by <span class="serif">intelligence.</span></h1>
-  <p class="hero-sub">Tradesoil International connects buyers and suppliers of oleochemicals and raw materials, with AI-powered pricing intelligence, a verified Asia sourcing network, and a lean consultancy model built for speed.</p>
-  <div class="hero-btns">
-    <a href="products.html" class="btn-p">View our products &rarr;</a>
-    <a href="contact.html" class="btn-o">Talk to us</a>
-  </div>
-  <div class="stats-bar">
-    <div class="si"><div class="sn">9</div><div class="sl">Product lines</div></div>
-    <div class="si"><div class="sn">Asia+</div><div class="sl">Sourcing network</div></div>
-    <div class="si"><div class="sn">24h</div><div class="sl">RFQ turnaround</div></div>
-  </div>
-</div>
-<div class="divider"></div>
-<div class="cs fade-up">
-  <div class="eyebrow">What we do</div>
-  <h2 class="st">Not a typical trader. A <strong>sourcing partner.</strong></h2>
-  <p class="sd">We operate on a lean consultancy model, giving buyers and suppliers direct access to expertise, market intelligence, and a trusted network across Asia, Europe, and the Middle East.</p>
-  <div class="fg">
-    <div class="fc"><div class="fi g"><i class="ti ti-search"></i></div><h4>Global sourcing</h4><p>Identify and qualify suppliers across Asia matched to your specs, quality standards, and price targets.</p></div>
-    <div class="fc"><div class="fi b"><i class="ti ti-chart-line"></i></div><h4>Pricing intelligence</h4><p>AI-monitored market benchmarks so you always know what a fair price looks like before you negotiate.</p></div>
-    <div class="fc"><div class="fi o"><i class="ti ti-map-2"></i></div><h4>Market entry</h4><p>Strategic planning and execution for suppliers entering EU, Middle East, and Asia-Pacific buyer markets.</p></div>
-    <div class="fc"><div class="fi g"><i class="ti ti-route"></i></div><h4>Supply chain redesign</h4><p>Audit your existing sourcing structure and build a more resilient, cost-efficient multi-origin strategy.</p></div>
-    <div class="fc"><div class="fi b"><i class="ti ti-file-invoice"></i></div><h4>RFQ management</h4><p>End-to-end RFQ processing, supplier matching, outreach, and quote consolidation within 24 hours.</p></div>
-    <div class="fc"><div class="fi p"><i class="ti ti-robot"></i></div><h4>AI-powered insights</h4><p>Monthly commodity intelligence reports covering price trends, supply risks, and sourcing recommendations.</p></div>
-  </div>
-</div>
-<div class="divider"></div>
-<div class="cs fade-up">
-  <div class="eyebrow">How we work</div>
-  <h2 class="st">From brief to delivery, <strong>without the noise.</strong></h2>
-  <p class="sd">A lean, direct process, no hand-offs, no account managers, no ambiguity.</p>
-  <div class="wf">
-    <div class="ws"><div class="wn">1</div><div class="wc"><h4>Understand your requirement</h4><p>We start with a focused brief, product specs, quality requirements, target price, timeline.</p></div><span class="wt n">Discovery</span></div>
-    <div class="ws"><div class="wn">2</div><div class="wc"><h4>Source and qualify</h4><p>AI-assisted supplier search and vetting across our Asia network, shortlisted, priced, compliance-checked.</p></div><span class="wt g">Sourcing</span></div>
-    <div class="ws"><div class="wn">3</div><div class="wc"><h4>Negotiate and structure</h4><p>We negotiate on your behalf with live market data and structure commercial terms to protect your position.</p></div><span class="wt b">Commercial</span></div>
-    <div class="ws"><div class="wn">4</div><div class="wc"><h4>Execute and monitor</h4><p>Documentation, logistics coordination, and delivery follow-through until you receive the goods.</p></div><span class="wt g">Delivery</span></div>
-  </div>
-</div>
-<div class="ai-strip fade-up">
-  <div class="ai-inner">
-    <div>
-      <div class="eyebrow" style="color:var(--gm)">AI-powered intelligence</div>
-      <h2>The new edge in <strong>raw material sourcing</strong></h2>
-      <p class="ai-sub">We've integrated AI into our core model, giving clients faster intelligence, sharper pricing insight, and a competitive edge that traditional trading houses can't match.</p>
-      <a href="contact.html" class="btn-p">Request a market brief &rarr;</a>
-    </div>
-    <div class="afl">
-      <div class="af"><span class="afn">01</span><div><p class="aft">Commodity price monitoring</p><p class="afd">AI watches pricing across markets and indices simultaneously, alerting you when to buy, hold, or negotiate.</p></div></div>
-      <div class="af"><span class="afn">02</span><div><p class="aft">Monthly intelligence reports</p><p class="afd">AI-generated market briefs covering price trends, supply risks, and sourcing recommendations for your materials.</p></div></div>
-      <div class="af"><span class="afn">03</span><div><p class="aft">24-hour RFQ processing</p><p class="afd">AI-assisted supplier matching means your requests go to market faster and close faster.</p></div></div>
-      <div class="af"><span class="afn">04</span><div><p class="aft">Supply chain risk alerts</p><p class="afd">Continuous monitoring of geopolitical events, port disruptions, and regulatory changes in your corridors.</p></div></div>
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Asia · Europe · Middle East</div>
+    <h1 class="hero-h1">Global trade, <em>direct.</em></h1>
+    <p class="hero-sub">Tradesoil International connects buyers and suppliers of oleochemicals and raw materials, with AI-powered pricing intelligence, a verified Asia sourcing network, and a lean consultancy model built for speed.</p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn-primary">Submit an RFQ →</a>
+      <a href="products.html" class="btn-outline">View products</a>
     </div>
   </div>
-</div>
-<div class="cta-wrap fade-up">
-  <div class="cta-block">
-    <h2>Ready to source smarter?</h2>
-    <p>Tell us what you need and we'll come back within 24 hours.</p>
-    <a href="contact.html" class="btn-p" style="font-size:16px;padding:15px 36px;justify-content:center">Get in touch &rarr;</a>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-n">10+</span><span class="hero-stat-l">Countries</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">20+</span><span class="hero-stat-l">Suppliers</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">50+</span><span class="hero-stat-l">Customers</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">1,000+ MT</span><span class="hero-stat-l">Volume</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">$10M+</span><span class="hero-stat-l">Revenue</span></div>
+  </div>
+</section>
+
+<!-- ══ STATS + PRICE ══ -->
+<div class="stats-price">
+  <div class="stat-cell">
+    <div class="stat-n">4</div>
+    <div class="stat-l"><strong>Regions covered</strong>Asia, Europe, Middle East, South Asia</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n">24h</div>
+    <div class="stat-l"><strong>RFQ turnaround</strong>Qualified shortlist, not a directory</div>
+  </div>
+  <div class="stat-cell" style="padding:40px 48px">
+    <div class="price-ey">Sample price benchmarks · indicative</div>
+    <div class="prow">
+      <span class="pname">FAME — Malaysia origin</span>
+      <div class="pright"><span class="pval">$1,080</span><span class="punit">/MT</span><span class="tup">↑ 2.1%</span></div>
+    </div>
+    <div class="prow">
+      <span class="pname">UCO — Asia</span>
+      <div class="pright"><span class="pval">$890</span><span class="punit">/MT</span><span class="tdn">↓ 0.8%</span></div>
+    </div>
+    <div class="prow">
+      <span class="pname">Crude Glycerin 80%</span>
+      <div class="pright"><span class="pval">$310</span><span class="punit">/MT</span><span class="tfl">→ stable</span></div>
+    </div>
+    <a href="contact.html" class="pcta">Request a real benchmark for your material →</a>
+    <div class="pnote">Updated monthly · indicative only · actual prices vary by spec, origin, and volume</div>
   </div>
 </div>
 
-<footer>
-  <div class="fg2">
-    <div class="footer-brand">
-      <a class="fb2" href="index.html">trade<span>soil</span></a>
-      <p>Whether you're looking for a new supplier, want to benchmark your current pricing, or need a strategic view on your supply chain, we're ready to help.</p>
-    </div>
-    <div class="fcol"><h5>Company</h5><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-    <div class="fcol"><h5>Products</h5><a href="products.html">All products</a><a href="products.html">FAME</a><a href="products.html">POME</a><a href="products.html">Co-processed Oil</a><a href="products.html">Mixed Fatty Acid</a></div>
-    <div class="fcol"><h5>Services</h5><a href="services.html">Global sourcing</a><a href="services.html">Pricing intelligence</a><a href="services.html">Market entry</a><a href="services.html">RFQ management</a></div>
+<!-- ══ WHO WE WORK WITH ══ -->
+<section class="sec-g" style="text-align:center">
+  <div class="eyebrow">Who we work with</div>
+  <div class="sec-h">Buyers and suppliers,<br><em>across every corridor.</em></div>
+  <p class="sec-p" style="margin-left:auto;margin-right:auto">From oleochemical manufacturers to biodiesel refineries, palm oil mills to European trading desks, we work across the full supply chain.</p>
+  <div class="who-grid">
+    <div class="who-card"><div class="who-title">Manufacturers</div><div class="who-body">Oleochemical and biodiesel producers needing a reliable, qualified feedstock supply.</div></div>
+    <div class="who-card"><div class="who-title">Refineries</div><div class="who-body">Processing plants sourcing UCO, POME, and co-processed oils across multiple origins.</div></div>
+    <div class="who-card"><div class="who-title">Producers</div><div class="who-body">Asian mills and producers seeking verified access to European and Middle Eastern buyers.</div></div>
+    <div class="who-card"><div class="who-title">Trading desks</div><div class="who-body">Trading operations wanting independent pricing intelligence and sourcing benchmarks.</div></div>
   </div>
-  <div class="fbot"><p>&copy; 2026 Tradesoil International &middot; Sri Lanka</p><p>info@tradesoil.com</p></div>
+</section>
+
+<!-- ══ WHAT WE DO ══ -->
+<section class="sec-w" style="text-align:center">
+  <div class="eyebrow">What we do</div>
+  <div class="sec-h">Not a typical trader.<br><em>A sourcing partner.</em></div>
+  <p class="sec-p" style="margin-left:auto;margin-right:auto">We operate on a lean consultancy model, giving buyers and suppliers direct access to expertise, market intelligence, and a trusted network across Asia, Europe, and the Middle East.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon g"><i class="ti ti-search"></i></div>
+      <div class="svc-title">Global sourcing</div>
+      <div class="svc-body">Identify and qualify suppliers across Asia matched to your specs, quality standards, and price targets.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon b"><i class="ti ti-chart-line"></i></div>
+      <div class="svc-title">Pricing intelligence</div>
+      <div class="svc-body">AI-monitored market benchmarks so you always know what a fair price looks like before you negotiate.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon o"><i class="ti ti-map-2"></i></div>
+      <div class="svc-title">Market entry</div>
+      <div class="svc-body">Strategic planning and execution for suppliers entering EU, Middle East, and Asia-Pacific buyer markets.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon g"><i class="ti ti-arrows-split-2"></i></div>
+      <div class="svc-title">Supply chain redesign</div>
+      <div class="svc-body">Audit your existing sourcing structure and build a more resilient, cost-efficient multi-origin strategy.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon b"><i class="ti ti-file-description"></i></div>
+      <div class="svc-title">RFQ management</div>
+      <div class="svc-body">End-to-end RFQ processing, supplier matching, outreach, and quote consolidation within 24 hours.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon p"><i class="ti ti-brain"></i></div>
+      <div class="svc-title">AI-powered insights</div>
+      <div class="svc-body">Monthly commodity intelligence reports covering price trends, supply risks, and sourcing recommendations.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW WE WORK ══ -->
+<section class="sec-gg" style="text-align:center">
+  <div class="eyebrow">How we work</div>
+  <div class="sec-h">From brief to delivery,<br><em>without the noise.</em></div>
+  <p class="sec-p" style="margin-left:auto;margin-right:auto">A lean, direct process with no hand-offs, no account managers, and no ambiguity.</p>
+  <div class="steps">
+    <div class="step"><div class="stepnum">1</div><div class="steptitle">Understand your requirement</div><div class="stepbody">Product specs, quality requirements, target price, and timeline. We start focused.</div><span class="steptag n">Discovery</span></div>
+    <div class="step"><div class="stepnum">2</div><div class="steptitle">Source and qualify</div><div class="stepbody">AI-assisted supplier search and vetting across our Asia network, shortlisted and priced.</div><span class="steptag g">Sourcing</span></div>
+    <div class="step"><div class="stepnum">3</div><div class="steptitle">Negotiate and structure</div><div class="stepbody">We negotiate on your behalf with live market data, structuring terms to protect your position.</div><span class="steptag b">Commercial</span></div>
+    <div class="step"><div class="stepnum">4</div><div class="steptitle">Execute and monitor</div><div class="stepbody">Documentation, logistics coordination, and delivery follow-through until goods are received.</div><span class="steptag g">Delivery</span></div>
+  </div>
+</section>
+
+<!-- ══ EXPOLEAD STRIP ══ -->
+<div class="el-strip">
+  <div>
+    <div class="el-from">Also from Tradesoil International</div>
+    <div class="el-logo"><div class="el-sq"></div><div class="el-name">expo<span>Lead</span> OS</div></div>
+    <div class="el-desc">Never lose a trade show contact again. Log every lead at the booth, track your pipeline, and get follow-up reminders so nothing slips through.</div>
+  </div>
+  <a href="https://expolead.tradesoil.com/" target="_blank" class="el-btn">Discover ExpoLead OS ↗</a>
+</div>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="sec-h">Ready to find your next reliable supplier?</div>
+  <p>Tell us what you need and we will come back within 24 hours.</p>
+  <a href="contact.html" class="btn-primary" style="font-size:17px;padding:16px 44px">Submit an RFQ →</a>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="footer-logo" href="index.html">trad<em>e</em>soil</a>
+      <p>Whether you are looking for a new supplier, want to benchmark your current pricing, or need a strategic view on your supply chain, we are ready to help.</p>
+    </div>
+    <div class="fcol">
+      <h5>Company</h5>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="fcol">
+      <h5>Products</h5>
+      <a href="products.html">All products</a>
+      <a href="products.html">FAME</a>
+      <a href="products.html">POME</a>
+      <a href="products.html">Co-processed Oil</a>
+      <a href="products.html">Mixed Fatty Acid</a>
+    </div>
+    <div class="fcol">
+      <h5>Services</h5>
+      <a href="services.html">Global sourcing</a>
+      <a href="services.html">Pricing intelligence</a>
+      <a href="services.html">Market entry</a>
+      <a href="services.html">RFQ management</a>
+    </div>
+  </div>
+  <div class="fbot"><p>© 2026 Tradesoil International · Sri Lanka</p><p>info@tradesoil.com</p></div>
 </footer>
+
 <script>
-function toggleMenu(){var h=document.getElementById('hamburger');var m=document.getElementById('mobile-menu');h.classList.toggle('open');m.classList.toggle('open')}
-function ofu(){var els=document.querySelectorAll('.fade-up');var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});els.forEach(function(el){obs.observe(el)})}
-ofu();
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+/* ── PARALLAX ─────────────────────────────────────────────── */
+(function(){
+  var heroCanvas = document.getElementById('heroCanvas');
+  var heroInner  = document.querySelector('.hero-inner');
+  var heroStats  = document.querySelector('.hero-stats');
+
+  function onScroll(){
+    var sy = window.scrollY;
+    heroCanvas.style.transform = 'translateY(' + (sy * 0.35) + 'px)';
+    var textShift = Math.min(sy * 0.18, 80);
+    heroInner.style.transform = 'translateY(-' + textShift + 'px)';
+    heroInner.style.opacity   = Math.max(1 - sy / 420, 0);
+    heroStats.style.opacity   = Math.max(1 - sy / 280, 0);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ── CANVAS NETWORK ──────────────────────────────────────── */
+(function(){
+  var canvas = document.getElementById('heroCanvas');
+  var ctx = canvas.getContext('2d');
+  var nodes = [];
+  var W, H, dpr;
+
+  function resize(){
+    dpr = window.devicePixelRatio || 1;
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function seed(){
+    var count = W < 600 ? 30 : 55;
+    nodes = [];
+    for(var i=0;i<count;i++){
+      nodes.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.45, vy: (Math.random()-0.5)*0.45,
+        r: Math.random()*1.5+1.2
+      });
+    }
+  }
+
+  window.addEventListener('resize', function(){ resize(); seed(); });
+  resize(); seed();
+
+  var CONNECT_DIST = 150;
+  var G = '29,158,117';
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    nodes.forEach(function(n){
+      n.x += n.vx; n.y += n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+    });
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<CONNECT_DIST){
+          var a = 0.22*(1-dist/CONNECT_DIST);
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x,nodes[i].y);
+          ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.strokeStyle='rgba('+G+','+a+')';
+          ctx.lineWidth=0.7;
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(function(n){
+      ctx.beginPath();
+      ctx.arc(Math.round(n.x)+0.5, Math.round(n.y)+0.5, n.r, 0, Math.PI*2);
+      ctx.fillStyle='rgba('+G+',0.5)';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 </script>
 </body>
 </html>
