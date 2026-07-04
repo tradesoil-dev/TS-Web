@@ -25,6 +25,51 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
 <link rel="stylesheet" href="style.css"/>
+<style>
+.custom-select { position: relative; width: 100%; }
+
+.cs-trigger {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 0 18px; height: 48px; border-radius: 10px; cursor: pointer;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.45); font-size: 14px; font-family: inherit;
+  text-align: left; transition: border-color 0.2s, background 0.2s;
+}
+.cs-trigger:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.09); }
+.cs-trigger.has-value { color: #fff; }
+.cs-trigger[aria-expanded="true"] { border-color: #1D9E75; background: rgba(29,158,117,0.08); }
+
+.cs-arrow { flex-shrink: 0; color: rgba(255,255,255,0.4); transition: transform 0.2s; }
+.cs-trigger[aria-expanded="true"] .cs-arrow { transform: rotate(180deg); color: #1D9E75; }
+
+.cs-list {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 200;
+  background: #0f2318; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+  overflow: hidden; list-style: none; padding: 6px;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0; transform: translateY(-6px); pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.cs-list.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+.cs-list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; color: rgba(255,255,255,0.65);
+  transition: background 0.12s, color 0.12s;
+}
+.cs-list li:hover { background: rgba(29,158,117,0.15); color: #fff; }
+.cs-list li.selected { background: rgba(29,158,117,0.2); color: #fff; }
+.cs-list li.selected .cs-code { background: #1D9E75; color: #fff; }
+
+.cs-code {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 42px; padding: 2px 7px; border-radius: 5px;
+  background: rgba(29,158,117,0.15); color: #1D9E75;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+</style>
 </head>
 <body>
 <nav>
@@ -64,18 +109,25 @@
         <input type="text" name="name" placeholder="Your name" required/>
         <input type="text" name="company" placeholder="Company" required/>
         <input type="email" name="email" placeholder="Email address" class="full" required/>
-        <select name="product" class="full" required><option value="" disabled selected>What product are you interested in?</option>
-          <option>FAME &mdash; Fatty Acid Methyl Ester</option>
-          <option>POME &mdash; Palm Oil Mill Effluent</option>
-          <option>UCO &mdash; Used Cooking Oil</option>
-          <option>Co-processed Oil</option>
-          <option>Mixed Fatty Acid (MFA)</option>
-          <option>Crude Glycerin 80%</option>
-          <option>Dimer Acid</option>
-          <option>Soybean Oil Fatty Acid</option>
-          <option>Monomer Acid</option>
-          <option>Other / not listed</option>
-        </select>
+        <input type="hidden" name="product" id="product-val"/>
+        <div class="custom-select full" id="custom-select">
+          <button type="button" class="cs-trigger" id="cs-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span id="cs-label">What product are you interested in?</span>
+            <svg class="cs-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="cs-list" role="listbox" id="cs-list">
+            <li role="option" data-val="FAME — Fatty Acid Methyl Ester"><span class="cs-code">FAME</span> Fatty Acid Methyl Ester</li>
+            <li role="option" data-val="POME — Palm Oil Mill Effluent"><span class="cs-code">POME</span> Palm Oil Mill Effluent</li>
+            <li role="option" data-val="UCO — Used Cooking Oil"><span class="cs-code">UCO</span> Used Cooking Oil</li>
+            <li role="option" data-val="Co-processed Oil"><span class="cs-code">CPO</span> Co-processed Oil</li>
+            <li role="option" data-val="Mixed Fatty Acid (MFA)"><span class="cs-code">MFA</span> Mixed Fatty Acid</li>
+            <li role="option" data-val="Crude Glycerin 80%"><span class="cs-code">GLY</span> Crude Glycerin 80%</li>
+            <li role="option" data-val="Dimer Acid"><span class="cs-code">DIM</span> Dimer Acid</li>
+            <li role="option" data-val="Soybean Oil Fatty Acid"><span class="cs-code">SOFA</span> Soybean Oil Fatty Acid</li>
+            <li role="option" data-val="Monomer Acid"><span class="cs-code">MON</span> Monomer Acid</li>
+            <li role="option" data-val="Other / not listed"><span class="cs-code">—</span> Other / not listed</li>
+          </ul>
+        </div>
         <input type="text" name="volume" placeholder="Estimated volume (e.g. 50 MT/month)"/>
         <input type="text" name="destination" placeholder="Destination port / country"/>
         <textarea name="message" class="full" placeholder="Any additional details, grade, spec, payment terms, timeline..."></textarea>
@@ -114,6 +166,44 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 function toggleMenu(){var h=document.getElementById('hamburger');var m=document.getElementById('mobile-menu');h.classList.toggle('open');m.classList.toggle('open')}
+
+// ── Custom product dropdown ───────────────────────────────────
+(function(){
+  var trigger = document.getElementById('cs-trigger');
+  var list    = document.getElementById('cs-list');
+  var label   = document.getElementById('cs-label');
+  var hidden  = document.getElementById('product-val');
+  var items   = list.querySelectorAll('li');
+
+  function open(){
+    trigger.setAttribute('aria-expanded','true');
+    list.classList.add('open');
+  }
+  function close(){
+    trigger.setAttribute('aria-expanded','false');
+    list.classList.remove('open');
+  }
+
+  trigger.addEventListener('click', function(e){
+    e.stopPropagation();
+    trigger.getAttribute('aria-expanded') === 'true' ? close() : open();
+  });
+
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      var val = item.getAttribute('data-val');
+      hidden.value = val;
+      label.textContent = val;
+      trigger.classList.add('has-value');
+      items.forEach(function(i){ i.classList.remove('selected'); });
+      item.classList.add('selected');
+      close();
+    });
+  });
+
+  document.addEventListener('click', function(){ close(); });
+  list.addEventListener('click', function(e){ e.stopPropagation(); });
+})();
 
 // ── Supabase form submission ──────────────────────────────────────────────
 (function(){
