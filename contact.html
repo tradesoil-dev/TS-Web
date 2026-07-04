@@ -11,7 +11,15 @@
 <meta property="og:title" content="Contact Tradesoil International"/>
 <meta property="og:description" content="Submit an enquiry for raw materials, biodiesel feedstocks or oleochemicals. We respond within 24 hours."/>
 <meta property="og:url" content="https://www.tradesoil.com/contact.html"/>
+<meta property="og:image" content="https://www.tradesoil.com/thumbnail.png"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Contact Tradesoil International"/>
+<meta name="twitter:description" content="Submit an enquiry for raw materials, biodiesel feedstocks or oleochemicals. We respond within 24 hours."/>
+<meta name="twitter:image" content="https://www.tradesoil.com/thumbnail.png"/>
 <link rel="canonical" href="https://www.tradesoil.com/contact.html"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" href="/favicon.ico"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
@@ -27,6 +35,7 @@
     <a href="products.html">Products</a>
     <a href="services.html">Services</a>
     <a href="contact.html" class="active">Contact</a>
+    <a href="https://expolead.tradesoil.com/" target="_blank" class="el-nav">ExpoLead OS <i class="ti ti-external-link"></i></a>
   </div>
   <div class="nav-right">
     <a href="contact.html" class="btn-nav active">Get in touch</a>
@@ -41,6 +50,7 @@
   <a href="products.html">Products</a>
   <a href="services.html">Services</a>
   <a href="contact.html" class="active">Contact</a>
+  <a href="https://expolead.tradesoil.com/" target="_blank" class="el-nav">ExpoLead OS <i class="ti ti-external-link"></i></a>
   <a href="contact.html" class="mob-cta">Get in touch →</a>
 </div>
 
@@ -50,11 +60,11 @@
       <div class="eyebrow" style="color:var(--gm);justify-content:center;display:flex">Get in touch</div>
       <h2 style="margin-bottom:0.5rem">Tell us what you need.</h2>
       <p style="margin-bottom:2.5rem">We'll come back to you within 24 hours with a plan.</p>
-      <form action="https://formspree.io/f/meedwppv" method="POST" class="cfg">
-        <input type="text" name="name" placeholder="Your name"/>
-        <input type="text" name="company" placeholder="Company"/>
-        <input type="email" name="email" placeholder="Email address" class="full"/>
-        <select name="product" class="full"><option value="" disabled selected>What product are you interested in?</option>
+      <form id="rfq-form" class="cfg">
+        <input type="text" name="name" placeholder="Your name" required/>
+        <input type="text" name="company" placeholder="Company" required/>
+        <input type="email" name="email" placeholder="Email address" class="full" required/>
+        <select name="product" class="full" required><option value="" disabled selected>What product are you interested in?</option>
           <option>FAME &mdash; Fatty Acid Methyl Ester</option>
           <option>POME &mdash; Palm Oil Mill Effluent</option>
           <option>UCO &mdash; Used Cooking Oil</option>
@@ -69,7 +79,10 @@
         <input type="text" name="volume" placeholder="Estimated volume (e.g. 50 MT/month)"/>
         <input type="text" name="destination" placeholder="Destination port / country"/>
         <textarea name="message" class="full" placeholder="Any additional details, grade, spec, payment terms, timeline..."></textarea>
-        <div class="full" style="text-align:center"><button type="submit" class="btn-cta">Send enquiry &rarr;</button></div>
+        <div class="full" style="text-align:center">
+          <button type="submit" class="btn-cta" id="rfq-submit">Send enquiry &rarr;</button>
+        </div>
+        <div id="rfq-msg" class="full" style="text-align:center;display:none;margin-top:1rem;padding:14px 20px;border-radius:8px;font-size:14px"></div>
       </form>
       <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:1.5rem;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
         Or reach us directly:
@@ -98,8 +111,57 @@
   </div>
   <div class="fbot"><p>&copy; 2026 Tradesoil International &middot; Sri Lanka</p><p>info@tradesoil.com</p></div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 function toggleMenu(){var h=document.getElementById('hamburger');var m=document.getElementById('mobile-menu');h.classList.toggle('open');m.classList.toggle('open')}
+
+// ── Supabase form submission ──────────────────────────────────────────────
+(function(){
+  var SB_URL = 'https://gsllwoyolnglbimjufjb.supabase.co';
+  var SB_KEY = 'sb_publishable_JzRTclMqjmhFoG-lEjJUBA_V191MEuI';
+  var client = supabase.createClient(SB_URL, SB_KEY);
+
+  var form   = document.getElementById('rfq-form');
+  var btn    = document.getElementById('rfq-submit');
+  var msg    = document.getElementById('rfq-msg');
+
+  function showMsg(text, ok) {
+    msg.textContent = text;
+    msg.style.display = 'block';
+    msg.style.background = ok ? 'rgba(29,158,117,0.15)' : 'rgba(220,60,60,0.15)';
+    msg.style.color = ok ? '#1D9E75' : '#e05555';
+    msg.style.border = '1px solid ' + (ok ? 'rgba(29,158,117,0.3)' : 'rgba(220,60,60,0.3)');
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var data = {
+      name:        form.name.value.trim(),
+      company:     form.company.value.trim(),
+      email:       form.email.value.trim(),
+      product:     form.product.value,
+      volume:      form.volume.value.trim(),
+      destination: form.destination.value.trim(),
+      message:     form.message.value.trim()
+    };
+
+    var result = await client.from('contact_submissions').insert([data]);
+
+    if (result.error) {
+      showMsg('Something went wrong. Please email us directly at info@tradesoil.com', false);
+      btn.disabled = false;
+      btn.textContent = 'Send enquiry →';
+    } else {
+      showMsg('Enquiry received. We\'ll get back to you within 24 hours.', true);
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = 'Send enquiry →';
+    }
+  });
+})();
 </script>
 </body>
 </html>
