@@ -84,35 +84,35 @@ nav {
 ══════════════════════════════════════ */
 .hero {
   position: relative; min-height: 100vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 120px 48px 100px;
-  background: radial-gradient(ellipse 100% 90% at 0% 0%, #8dd5ba 0%, #b5e3d0 18%, #d0efe3 38%, #e8f8f2 60%, #f6fdf9 100%);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 64px 0;
+  background: radial-gradient(ellipse 120% 100% at 0% 0%, #8dd5ba 0%, #b5e3d0 18%, #d0efe3 38%, #e8f8f2 60%, #f6fdf9 100%);
   overflow: hidden;
-  will-change: transform;
+}
+.hero-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  align-items: center; position: relative; z-index: 2;
+  will-change: transform, opacity;
 }
 .hero-inner { will-change: transform, opacity; transition: none; }
-.hero-stats  { will-change: opacity; transition: none; }
-
-.hero-inner { position: relative; z-index: 2; max-width: 860px; }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 11px; letter-spacing: 3px; color: var(--g); text-transform: uppercase;
   background: rgba(29,158,117,0.1); border: 1px solid rgba(29,158,117,0.2);
-  padding: 6px 16px; border-radius: 20px; margin-bottom: 32px;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 28px;
 }
 .hero-h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(64px, 7.5vw, 110px);
+  font-size: clamp(52px, 6vw, 88px);
   font-weight: 700; line-height: 0.92; letter-spacing: -2px;
-  color: var(--text); margin-bottom: 28px;
-  white-space: nowrap;
+  color: var(--text); margin-bottom: 24px;
 }
 .hero-h1 em { color: var(--g); font-style: normal; }
 .hero-sub {
-  font-size: 18px; color: #2a4a3a; line-height: 1.75;
-  max-width: 620px; margin: 0 auto 52px; font-weight: 300;
+  font-size: 16px; color: #2a4a3a; line-height: 1.75;
+  max-width: 480px; margin-bottom: 40px; font-weight: 300;
 }
-.hero-btns { display: flex; gap: 12px; justify-content: center; margin-bottom: 64px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--g); color: #fff; font-size: 15px; font-weight: 600;
@@ -126,16 +126,46 @@ nav {
 }
 .btn-outline:hover { background: rgba(29,158,117,0.12); }
 
-.hero-stats {
+/* Pricing card in hero */
+.hero-price-card {
+  background: #0d2a1e; border-radius: 20px; padding: 28px 28px 20px;
   position: relative; z-index: 2;
-  display: flex; gap: 0; border: 1px solid rgba(29,158,117,0.2);
-  border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(8px);
+}
+.hpc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.hpc-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px; }
+.hpc-title i { font-size: 14px; color: var(--g); }
+.hpc-live { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--g); font-weight: 600; }
+.hpc-live::before { content: ''; display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--g); animation: livepulse 2s ease-in-out infinite; }
+@keyframes livepulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.hpc-row { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.hpc-row:last-of-type { border-bottom: none; }
+.hpc-info { flex: 1; }
+.hpc-name { font-size: 14px; font-weight: 600; color: #fff; }
+.hpc-sub  { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+.hpc-spark { flex: 0 0 60px; height: 28px; }
+.hpc-right { text-align: right; flex-shrink: 0; }
+.hpc-val  { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
+.hpc-unit { font-size: 11px; color: rgba(255,255,255,0.3); }
+.hpc-chg  { font-size: 11px; margin-top: 3px; }
+.hpc-up   { color: #4ade9a; }
+.hpc-dn   { color: #f87171; }
+.hpc-fl   { color: rgba(255,255,255,0.3); }
+.hpc-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+.hpc-cta  { font-size: 12px; color: var(--g); text-decoration: none; }
+.hpc-cta:hover { text-decoration: underline; }
+.hpc-note { font-size: 10px; color: rgba(255,255,255,0.2); }
+
+/* Stats bar */
+.hero-stats {
+  position: relative; z-index: 2; will-change: opacity;
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(29,158,117,0.15);
+  margin-top: 60px;
 }
 .hero-stat {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 20px 16px; border-right: 1px solid rgba(29,158,117,0.1);
-  text-align: center;
+  flex: 1; display: flex; flex-direction: column;
+  padding: 24px 20px; border-right: 1px solid rgba(29,158,117,0.1);
 }
 .hero-stat:last-child { border-right: none; }
 .hero-stat-n { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
@@ -297,21 +327,17 @@ footer {
   .nav-cta { display: none; }
   .hamburger { display: flex; }
 
-  .hero { padding: 100px 24px 90px; min-height: 100svh; }
-  .hero-h1 { font-size: clamp(44px,10vw,72px); white-space: normal; letter-spacing: -1px; }
-  .hero-sub { font-size: 14px; }
+  .hero { padding: 88px 24px 0; min-height: auto; }
+  .hero-split { grid-template-columns: 1fr; gap: 32px; }
+  .hero-h1 { font-size: clamp(44px,10vw,72px); letter-spacing: -1px; }
+  .hero-sub { font-size: 14px; max-width: 100%; }
   .hero-eyebrow { font-size: 10px; padding: 5px 12px; }
-  .hero-btns { flex-direction: column; align-items: center; }
 
-  .hero-stats { flex-wrap: wrap; }
-  .hero-stat { flex: 1 1 33%; border-bottom: 1px solid rgba(29,158,117,0.1); padding: 14px 0; }
+  .hero-stats { flex-wrap: wrap; margin-top: 32px; }
+  .hero-stat { flex: 1 1 33%; border-bottom: 1px solid rgba(29,158,117,0.1); padding: 14px 8px; }
   .hero-stat:nth-child(3) { border-right: none; }
   .hero-stat-n { font-size: 22px; }
   .hero-stat-l { font-size: 9px; }
-
-  .stats-price { grid-template-columns: 1fr; }
-  .stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 28px 24px; }
-  .stat-cell:last-child { border-bottom: none; }
 
   section { padding: 52px 24px; }
 
@@ -377,13 +403,41 @@ footer {
 <section class="hero">
   <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
 
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Asia · Europe · Middle East</div>
-    <h1 class="hero-h1">Global trade, <em>direct.</em></h1>
-    <p class="hero-sub">Tradesoil International connects buyers and suppliers of oleochemicals and raw materials, with AI-powered pricing intelligence, a verified Asia sourcing network, and a lean consultancy model built for speed.</p>
-    <div class="hero-btns">
-      <a href="contact.html" class="btn-primary">Submit an RFQ →</a>
-      <a href="products.html" class="btn-outline">View products</a>
+  <div class="hero-split">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Asia · Europe · Middle East</div>
+      <h1 class="hero-h1">Global trade, <em>direct.</em></h1>
+      <p class="hero-sub">Tradesoil International connects buyers and suppliers of oleochemicals and raw materials, with AI-powered pricing intelligence, a verified Asia sourcing network, and a lean consultancy model built for speed.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn-primary">Submit an RFQ →</a>
+        <a href="products.html" class="btn-outline">View products</a>
+      </div>
+    </div>
+
+    <div class="hero-price-card">
+      <div class="hpc-header">
+        <div class="hpc-title"><i class="ti ti-chart-line"></i> Pricing intelligence</div>
+        <div class="hpc-live">LIVE</div>
+      </div>
+      <div class="hpc-row">
+        <div class="hpc-info"><div class="hpc-name">FAME</div><div class="hpc-sub">Malaysia origin · CFR</div></div>
+        <svg class="hpc-spark" viewBox="0 0 60 28" fill="none"><polyline points="0,20 10,18 20,14 30,16 40,10 50,8 60,6" stroke="#4ade9a" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div class="hpc-right"><div class="hpc-val">$1,080<span class="hpc-unit">/MT</span></div><div class="hpc-chg hpc-up">↑ 2.1%</div></div>
+      </div>
+      <div class="hpc-row">
+        <div class="hpc-info"><div class="hpc-name">UCO</div><div class="hpc-sub">Asia · FOB · ISCC EU</div></div>
+        <svg class="hpc-spark" viewBox="0 0 60 28" fill="none"><polyline points="0,8 10,10 20,12 30,14 40,16 50,18 60,20" stroke="#f87171" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div class="hpc-right"><div class="hpc-val">$890<span class="hpc-unit">/MT</span></div><div class="hpc-chg hpc-dn">↓ 0.8%</div></div>
+      </div>
+      <div class="hpc-row">
+        <div class="hpc-info"><div class="hpc-name">Crude Glycerin 80%</div><div class="hpc-sub">Indonesia · FOB</div></div>
+        <svg class="hpc-spark" viewBox="0 0 60 28" fill="none"><polyline points="0,14 10,13 20,15 30,14 40,13 50,15 60,14" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div class="hpc-right"><div class="hpc-val">$310<span class="hpc-unit">/MT</span></div><div class="hpc-chg hpc-fl">→ stable</div></div>
+      </div>
+      <div class="hpc-foot">
+        <a href="contact.html" class="hpc-cta">Request a real benchmark →</a>
+        <span class="hpc-note">Indicative · updates monthly</span>
+      </div>
     </div>
   </div>
 
@@ -391,39 +445,11 @@ footer {
     <div class="hero-stat"><span class="hero-stat-n">10+</span><span class="hero-stat-l">Countries</span></div>
     <div class="hero-stat"><span class="hero-stat-n">20+</span><span class="hero-stat-l">Suppliers</span></div>
     <div class="hero-stat"><span class="hero-stat-n">50+</span><span class="hero-stat-l">Customers</span></div>
-    <div class="hero-stat"><span class="hero-stat-n">1,000+ MT</span><span class="hero-stat-l">Volume</span></div>
+    <div class="hero-stat"><span class="hero-stat-n">1,000+ MT</span><span class="hero-stat-l">Volume traded</span></div>
     <div class="hero-stat"><span class="hero-stat-n">$10M+</span><span class="hero-stat-l">Revenue</span></div>
   </div>
 </section>
 
-<!-- ══ STATS + PRICE ══ -->
-<div class="stats-price">
-  <div class="stat-cell">
-    <div class="stat-n">4</div>
-    <div class="stat-l"><strong>Regions covered</strong>Asia, Europe, Middle East, South Asia</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">24h</div>
-    <div class="stat-l"><strong>RFQ turnaround</strong>Qualified shortlist, not a directory</div>
-  </div>
-  <div class="stat-cell" style="padding:40px 48px">
-    <div class="price-ey">Sample price benchmarks · indicative</div>
-    <div class="prow">
-      <span class="pname">FAME — Malaysia origin</span>
-      <div class="pright"><span class="pval">$1,080</span><span class="punit">/MT</span><span class="tup">↑ 2.1%</span></div>
-    </div>
-    <div class="prow">
-      <span class="pname">UCO — Asia</span>
-      <div class="pright"><span class="pval">$890</span><span class="punit">/MT</span><span class="tdn">↓ 0.8%</span></div>
-    </div>
-    <div class="prow">
-      <span class="pname">Crude Glycerin 80%</span>
-      <div class="pright"><span class="pval">$310</span><span class="punit">/MT</span><span class="tfl">→ stable</span></div>
-    </div>
-    <a href="contact.html" class="pcta">Request a real benchmark for your material →</a>
-    <div class="pnote">Updated monthly · indicative only · actual prices vary by spec, origin, and volume</div>
-  </div>
-</div>
 
 <!-- ══ WHO WE WORK WITH ══ -->
 <section class="sec-g" style="text-align:center">
