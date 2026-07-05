@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 312 297">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <!-- Top-left: white outline -->
-  <rect x="29.7" y="0" width="134.9" height="141.4" rx="22" fill="none" stroke="#ffffff" stroke-width="27"/>
+  <rect x="2" y="2" width="44" height="44" rx="9" fill="none" stroke="#ffffff" stroke-width="6"/>
   <!-- Top-right: white outline -->
-  <rect x="177.2" y="0" width="134.9" height="141.4" rx="22" fill="none" stroke="#ffffff" stroke-width="27"/>
+  <rect x="54" y="2" width="44" height="44" rx="9" fill="none" stroke="#ffffff" stroke-width="6"/>
   <!-- Bottom-left: white outline -->
-  <rect x="29.7" y="155.6" width="134.9" height="141.4" rx="22" fill="none" stroke="#ffffff" stroke-width="27"/>
+  <rect x="2" y="54" width="44" height="44" rx="9" fill="none" stroke="#ffffff" stroke-width="6"/>
   <!-- Bottom-right: green filled -->
-  <rect x="177.2" y="155.6" width="134.9" height="141.4" rx="22" fill="#18b67d" stroke="#18b67d" stroke-width="13"/>
+  <rect x="54" y="54" width="44" height="44" rx="9" fill="#18b67d"/>
 </svg>
