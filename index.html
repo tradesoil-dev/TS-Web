@@ -90,24 +90,19 @@ nav {
   overflow: hidden;
 }
 .hero-split {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-  align-items: center; position: relative; z-index: 2;
+  max-width: 820px; position: relative; z-index: 2;
   will-change: transform, opacity;
 }
 .hero-inner { will-change: transform, opacity; transition: none; }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 11px; letter-spacing: 3px; color: var(--g); text-transform: uppercase;
-  background: rgba(29,158,117,0.1); border: 1px solid rgba(29,158,117,0.2);
-  padding: 6px 16px; border-radius: 20px; margin-bottom: 28px;
-}
 .hero-h1 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(52px, 6vw, 88px);
-  font-weight: 700; line-height: 0.92; letter-spacing: -2px;
+  font-size: clamp(60px, 8vw, 120px);
+  font-weight: 700; line-height: 0.9; letter-spacing: -1.5px;
+  text-transform: uppercase;
   color: var(--text); margin-bottom: 24px;
 }
 .hero-h1 em { color: var(--g); font-style: normal; }
+.hero-outline { color: transparent; -webkit-text-stroke: 1.5px var(--text); }
 .hero-sub {
   font-size: 16px; color: #2a4a3a; line-height: 1.75;
   max-width: 480px; margin-bottom: 40px; font-weight: 300;
@@ -126,10 +121,9 @@ nav {
 }
 .btn-outline:hover { background: rgba(29,158,117,0.12); }
 
-/* Pricing card in hero */
+/* Pricing card in hero — removed */
 .hero-price-card {
-  background: #0d2a1e; border-radius: 20px; padding: 28px 28px 20px;
-  position: relative; z-index: 2;
+  display: none;
 }
 .hpc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
 .hpc-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px; }
@@ -334,10 +328,8 @@ footer {
   .hamburger { display: flex; }
 
   .hero { padding: 88px 24px 0; min-height: auto; }
-  .hero-split { grid-template-columns: 1fr; gap: 32px; }
   .hero-h1 { font-size: clamp(44px,10vw,72px); letter-spacing: -1px; }
   .hero-sub { font-size: 14px; max-width: 100%; }
-  .hero-eyebrow { font-size: 10px; padding: 5px 12px; }
 
   .hero-stats { flex-wrap: wrap; margin-top: 32px; }
   .hero-stat { flex: 1 1 33%; border-bottom: 1px solid rgba(29,158,117,0.1); padding: 14px 8px; }
@@ -412,8 +404,7 @@ footer {
 
   <div class="hero-split">
     <div class="hero-inner">
-      <div class="hero-eyebrow">Asia · Europe · Middle East</div>
-      <h1 class="hero-h1">Global trade, <em>direct.</em></h1>
+      <h1 class="hero-h1">Raw materials<br>&amp; feedstock,<br>sourced <em>port</em><br><span class="hero-outline">to port.</span></h1>
       <p class="hero-sub">Tradesoil International connects buyers and suppliers of oleochemicals and raw materials, with AI-powered pricing intelligence, a verified Asia sourcing network, and a lean consultancy model built for speed.</p>
       <div class="hero-btns">
         <a href="contact.html" class="btn-primary">Submit an RFQ →</a>
