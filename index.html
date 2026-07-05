@@ -575,18 +575,7 @@ function toggleMenu(){
   var heroInner  = document.querySelector('.hero-inner');
   var heroStats  = document.querySelector('.hero-stats');
 
-  function onScroll(){
-    if (window.innerWidth < 768) return;
-    var sy = window.scrollY;
-    heroCanvas.style.transform = 'translateY(' + (sy * 0.35) + 'px)';
-    var textShift = Math.min(sy * 0.18, 80);
-    heroInner.style.transform = 'translateY(-' + textShift + 'px)';
-    heroInner.style.opacity   = Math.max(1 - sy / 420, 0);
-    heroStats.style.opacity   = Math.max(1 - sy / 280, 0);
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // parallax removed
 })();
 
 /* ── CANVAS NETWORK ──────────────────────────────────────── */
