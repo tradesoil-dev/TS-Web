@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Tradesoil International | The Corridor Desk (Design Preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --green:#1D9E75;
+  --deep:#0B2B1F;
+  --deep2:#0E3626;
+  --ink:#0D1711;
+  --mist:#F2F7F4;
+  --paper:#FAFCFB;
+  --line:rgba(13,23,17,0.12);
+  --line-soft:rgba(13,23,17,0.07);
+  --muted:rgba(13,23,17,0.52);
+  --up:#1D9E75;
+  --dn:#C64B3E;
+  --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--mist);color:var(--ink);overflow-x:hidden;font-weight:400}
+::selection{background:rgba(29,158,117,0.25)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+/* ── LABELS ── */
+.lab{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);font-weight:600}
+.code{font-family:var(--mono);font-size:11px;letter-spacing:0.5px}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:50;background:rgba(242,247,244,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 32px;height:66px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:23px;font-weight:700;letter-spacing:0.2px;color:var(--ink);text-decoration:none}
+.logo em{color:var(--green);font-style:normal}
+.logo .code{color:var(--muted);margin-left:10px;font-weight:400;letter-spacing:1px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:10px 22px;border-radius:99px;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--green)}
+
+/* ── HERO ── */
+.hero{padding:84px 0 0}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(58px,8.4vw,124px);line-height:.9;letter-spacing:-1.5px;text-transform:uppercase;max-width:900px}
+h1 em{font-style:normal;color:var(--green)}
+h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:34px 0 56px;flex-wrap:wrap}
+.hero-sub{font-size:16.5px;font-weight:300;line-height:1.75;color:rgba(13,23,17,0.68);max-width:520px}
+.hero-sub strong{font-weight:600;color:var(--ink)}
+.hero-btns{display:flex;gap:12px;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;padding:15px 30px;border-radius:99px;text-decoration:none;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-g{background:var(--green);color:#fff}
+.btn-g:hover{background:#178A66}
+.btn-o{border:1.5px solid var(--line);color:var(--ink);background:transparent}
+.btn-o:hover{border-color:var(--ink)}
+
+/* ── TICKER ── */
+.ticker{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--paper);overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:tick 42s linear infinite;padding:13px 0}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tk{display:inline-flex;align-items:baseline;gap:9px;padding:0 34px;border-right:1px solid var(--line-soft)}
+.tk .code{color:var(--muted)}
+.tk b{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:600;letter-spacing:.3px}
+.tk .u{font-size:11px;color:var(--up);font-weight:500}
+.tk .d{font-size:11px;color:var(--dn);font-weight:500}
+.tk .f{font-size:11px;color:var(--muted)}
+
+/* ── CORRIDOR BOARD ── */
+.board-sec{padding:76px 0 30px}
+.board-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;gap:20px;flex-wrap:wrap}
+.board-head h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(30px,3.4vw,44px);font-weight:700;text-transform:uppercase;letter-spacing:-.5px;line-height:1}
+.board-head .code{color:var(--muted)}
+.board{background:var(--deep);border-radius:20px;padding:18px 10px 8px;position:relative;overflow:hidden}
+.board::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 90% at 50% 50%,rgba(29,158,117,0.10),transparent 70%);pointer-events:none}
+.board svg{display:block;width:100%;height:auto}
+.board-legend{display:flex;gap:26px;flex-wrap:wrap;padding:14px 24px 16px;position:relative;z-index:1}
+.lg{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.55)}
+.lg .sw{width:18px;height:2px;border-radius:2px;background:var(--green)}
+.lg .sw.dash{background:repeating-linear-gradient(90deg,#5DCAA5 0 4px,transparent 4px 8px)}
+.lg .sw.node{width:8px;height:8px;border-radius:50%;background:#fff}
+
+/* svg text */
+.pt{font-family:'Barlow',sans-serif;font-size:13px;font-weight:600;fill:#fff}
+.pc{font-family:var(--mono);font-size:9.5px;letter-spacing:1px;fill:rgba(255,255,255,0.42)}
+.hub-t{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;fill:#fff;letter-spacing:.5px}
+.chip-t{font-family:var(--mono);font-size:9px;letter-spacing:.8px;fill:#9FE3C8}
+
+/* ── SERVICES LEDGER ── */
+.sec{padding:88px 0}
+.sec-head{margin-bottom:44px;max-width:640px}
+.sec-head h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,4.2vw,58px);font-weight:700;text-transform:uppercase;letter-spacing:-.8px;line-height:.95;margin:12px 0 16px}
+.sec-head h2 em{font-style:normal;color:var(--green)}
+.sec-head p{font-size:15.5px;font-weight:300;line-height:1.75;color:rgba(13,23,17,0.62)}
+.ledger{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:64px 1fr 1.4fr auto;gap:28px;align-items:center;padding:26px 6px;border-bottom:1px solid var(--line);transition:background .2s;text-decoration:none;color:inherit}
+.row:hover{background:var(--paper)}
+.row .code{color:var(--muted)}
+.row h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:600;letter-spacing:.2px;text-transform:uppercase}
+.row p{font-size:14px;font-weight:300;line-height:1.65;color:rgba(13,23,17,0.6)}
+.row .arr{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:16px;transition:all .2s;flex-shrink:0}
+.row:hover .arr{background:var(--green);border-color:var(--green);color:#fff;transform:rotate(45deg)}
+
+/* ── PRODUCT SPEC CARDS ── */
+.spec-sec{background:var(--paper);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.spec{background:var(--mist);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.spec:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(11,43,31,0.10);border-color:var(--green)}
+.spec-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.spec-top .code{color:var(--muted)}
+.spec .tag{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--green);background:rgba(29,158,117,0.1);border:1px solid rgba(29,158,117,0.25);padding:4px 10px;border-radius:99px}
+.spec h3{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;text-transform:uppercase;letter-spacing:-.3px;line-height:1;margin:10px 0 2px}
+.spec .fn{font-size:12.5px;color:var(--muted);margin-bottom:18px}
+.srow{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-top:1px dashed var(--line)}
+.srow .k{font-size:12px;color:var(--muted)}
+.srow .v{font-family:var(--mono);font-size:12px;font-weight:500}
+.spec-foot{margin-top:auto;padding-top:18px;display:flex;gap:6px;flex-wrap:wrap}
+.port{font-family:var(--mono);font-size:10px;letter-spacing:.8px;padding:5px 10px;border-radius:6px;background:var(--deep);color:#9FE3C8}
+.spec-more{display:flex;align-items:center;justify-content:center;text-align:center;border-style:dashed;background:transparent}
+.spec-more a{color:var(--ink);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:600;text-transform:uppercase;line-height:1.25}
+.spec-more a em{font-style:normal;color:var(--green);display:block;font-size:15px;font-family:'Barlow',sans-serif;font-weight:500;text-transform:none;margin-top:8px}
+
+/* ── TRACKING ── */
+.track{background:var(--deep);border-radius:20px;padding:52px 48px;position:relative;overflow:hidden}
+.track::before{content:'';position:absolute;top:-120px;right:-120px;width:420px;height:420px;background:radial-gradient(ellipse,rgba(29,158,117,0.25),transparent 70%);pointer-events:none}
+.track .lab{color:#5DCAA5}
+.track h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(30px,3.6vw,46px);font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:-.5px;margin:10px 0 40px}
+.tline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.tline::before{content:'';position:absolute;top:9px;left:calc(12.5% + 10px);right:calc(12.5% + 10px);height:2px;background:linear-gradient(90deg,var(--green),rgba(29,158,117,0.25))}
+.ts{position:relative;padding:0 18px 0 0;text-align:center}
+.ts .pip{width:20px;height:20px;border-radius:50%;background:var(--deep);border:2px solid var(--green);margin:0 auto 18px;position:relative;z-index:1}
+.ts:first-child .pip{background:var(--green);box-shadow:0 0 0 5px rgba(29,158,117,0.2)}
+.ts .code{color:rgba(255,255,255,0.35);display:block;margin-bottom:6px}
+.ts h4{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+.ts p{font-size:12.5px;font-weight:300;line-height:1.65;color:rgba(255,255,255,0.5)}
+
+/* ── CTA ── */
+.cta{padding:104px 0 96px;text-align:center}
+.cta h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(44px,6vw,84px);font-weight:700;text-transform:uppercase;letter-spacing:-1px;line-height:.92;margin:14px 0 18px}
+.cta h2 em{font-style:normal;color:var(--green)}
+.cta p{font-size:16px;font-weight:300;color:rgba(13,23,17,0.62);margin-bottom:36px}
+.cta .code{color:var(--muted);display:block;margin-top:26px}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--line);padding:30px 0;background:var(--paper)}
+.foot-in{max-width:1180px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-in p{font-size:12.5px;color:var(--muted)}
+.foot-in .code{color:var(--muted)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .ticker-track{animation:none}
+  .hero-eyebrow .dot{animation:none}
+}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .wrap,.nav-in,.foot-in{padding:0 20px}
+  .nav-links a:not(.nav-cta){display:none}
+  .hero{padding-top:56px}
+  .hero-foot{margin:28px 0 44px}
+  .row{grid-template-columns:44px 1fr auto;gap:16px}
+  .row p{grid-column:2/-1;grid-row:2}
+  .spec-grid{grid-template-columns:1fr 1fr}
+  .track{padding:40px 24px}
+  .tline{grid-template-columns:1fr 1fr;gap:32px 16px}
+  .tline::before{display:none}
+  .ts{padding:0}
+}
+@media(max-width:560px){
+  .spec-grid{grid-template-columns:1fr}
+  .tline{grid-template-columns:1fr}
+  .board{border-radius:14px}
+  .board-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .board-scroll::-webkit-scrollbar{display:none}
+  .board-scroll svg{min-width:760px}
+  .swipe-hint{display:block !important}
+  .hero-btns{width:100%}
+  .btn{flex:1;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="index.html">trad<em>e</em>soil <span class="code">LK·CMB</span></a>
+    <div class="nav-links">
+      <a href="#corridors">Corridors</a>
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="contact.html" class="nav-cta">Submit an RFQ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow rv on">
+      <span class="dot"></span>
+      <span class="lab">Corridor desk · Asia → Europe → Middle East</span>
+    </div>
+    <h1 class="rv on">Feedstock,<br/>sourced <em>port</em><br/><span class="outline">to port.</span></h1>
+    <div class="hero-foot rv on">
+      <p class="hero-sub">Tradesoil International runs the corridor between <strong>verified Asian suppliers</strong> of oleochemicals and biodiesel feedstocks and buyers in Europe, the Middle East, and Korea. One desk, live pricing intelligence on every quote, and follow-through until the cargo lands.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn btn-g">Submit an RFQ ↗</a>
+        <a href="products.html" class="btn btn-o">View products</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-label="Indicative price benchmarks, updated monthly">
+    <div class="ticker-track" id="tick"></div>
+  </div>
+</header>
+
+<!-- CORRIDOR BOARD -->
+<section class="board-sec" id="corridors">
+  <div class="wrap">
+    <div class="board-head rv">
+      <div>
+        <span class="lab">Live corridors</span>
+        <h2>Where the cargo moves</h2>
+      </div>
+      <span class="code">HUB: COLOMBO · LKCMB</span>
+    </div>
+    <div class="board rv">
+      <div class="board-scroll">
+      <svg viewBox="0 0 960 400" role="img" aria-label="Schematic of Tradesoil trade corridors: cargo from Busan, Shanghai, Port Klang and Jakarta routed through the Colombo desk to Rotterdam, Jebel Ali, Mersin and Ulsan">
+        <defs>
+          <linearGradient id="ln" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#1D9E75" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#1D9E75" stop-opacity=".3"/>
+          </linearGradient>
+        </defs>
+
+        <!-- grid dots -->
+        <g fill="rgba(255,255,255,0.05)">
+          <circle cx="180" cy="60" r="1.5"/><circle cx="320" cy="120" r="1.5"/><circle cx="240" cy="300" r="1.5"/>
+          <circle cx="640" cy="70" r="1.5"/><circle cx="720" cy="330" r="1.5"/><circle cx="560" cy="340" r="1.5"/>
+          <circle cx="420" cy="60" r="1.5"/><circle cx="820" cy="200" r="1.5"/><circle cx="120" cy="200" r="1.5"/>
+        </g>
+
+        <!-- ORIGIN ROUTES (in) -->
+        <g fill="none" stroke="url(#ln)" stroke-width="1.6">
+          <path id="r1" d="M150,80  C 290,80  360,160 465,192"/>
+          <path id="r2" d="M150,160 C 280,160 360,180 462,197"/>
+          <path id="r3" d="M150,240 C 280,240 360,220 462,203"/>
+          <path id="r4" d="M150,320 C 290,320 360,240 465,208"/>
+        </g>
+        <!-- DESTINATION ROUTES (out, dashed) -->
+        <g fill="none" stroke="#5DCAA5" stroke-width="1.6" stroke-dasharray="5 6" opacity=".8">
+          <path id="r5" d="M495,192 C 600,160 680,80  810,80"/>
+          <path id="r6" d="M498,197 C 620,180 700,160 810,160"/>
+          <path id="r7" d="M498,203 C 620,220 700,240 810,240"/>
+          <path id="r8" d="M495,208 C 600,240 680,320 810,320"/>
+        </g>
+
+        <!-- cargo dots -->
+        <g class="cargo">
+          <circle r="3.5" fill="#fff"><animateMotion dur="7s"  repeatCount="indefinite"><mpath href="#r1"/></animateMotion></circle>
+          <circle r="3.5" fill="#fff"><animateMotion dur="8s"  begin="2s" repeatCount="indefinite"><mpath href="#r2"/></animateMotion></circle>
+          <circle r="3.5" fill="#fff"><animateMotion dur="9s"  begin="1s" repeatCount="indefinite"><mpath href="#r3"/></animateMotion></circle>
+          <circle r="3.5" fill="#fff"><animateMotion dur="7.5s" begin="3.4s" repeatCount="indefinite"><mpath href="#r4"/></animateMotion></circle>
+          <circle r="3.5" fill="#9FE3C8"><animateMotion dur="8s"  begin="1.2s" repeatCount="indefinite"><mpath href="#r5"/></animateMotion></circle>
+          <circle r="3.5" fill="#9FE3C8"><animateMotion dur="9s"  begin="4s" repeatCount="indefinite"><mpath href="#r6"/></animateMotion></circle>
+          <circle r="3.5" fill="#9FE3C8"><animateMotion dur="7s"  begin="2.6s" repeatCount="indefinite"><mpath href="#r7"/></animateMotion></circle>
+          <circle r="3.5" fill="#9FE3C8"><animateMotion dur="8.5s" begin=".8s" repeatCount="indefinite"><mpath href="#r8"/></animateMotion></circle>
+        </g>
+
+        <!-- product chips on routes -->
+        <g>
+          <rect x="270" y="96"  rx="4" width="94" height="17" fill="rgba(29,158,117,0.14)" stroke="rgba(29,158,117,0.4)" stroke-width=".6"/>
+          <text x="317" y="108" text-anchor="middle" class="chip-t">CO-PRO OIL · MFA</text>
+          <rect x="276" y="243" rx="4" width="82" height="17" fill="rgba(29,158,117,0.14)" stroke="rgba(29,158,117,0.4)" stroke-width=".6"/>
+          <text x="317" y="255" text-anchor="middle" class="chip-t">POME · FAME</text>
+          <rect x="606" y="103" rx="4" width="104" height="17" fill="rgba(93,202,165,0.1)" stroke="rgba(93,202,165,0.35)" stroke-width=".6"/>
+          <text x="658" y="115" text-anchor="middle" class="chip-t">UCO · RED II ×2</text>
+          <rect x="612" y="256" rx="4" width="92" height="17" fill="rgba(93,202,165,0.1)" stroke="rgba(93,202,165,0.35)" stroke-width=".6"/>
+          <text x="658" y="268" text-anchor="middle" class="chip-t">CG80 · DIMER</text>
+        </g>
+
+        <!-- ORIGIN NODES -->
+        <g>
+          <g transform="translate(150,80)"><circle r="5" fill="#fff"/><circle r="9" fill="none" stroke="rgba(255,255,255,0.25)"/><text x="-18" y="4" text-anchor="end" class="pt">Busan</text><text x="-18" y="19" text-anchor="end" class="pc">KRPUS</text></g>
+          <g transform="translate(150,160)"><circle r="5" fill="#fff"/><circle r="9" fill="none" stroke="rgba(255,255,255,0.25)"/><text x="-18" y="4" text-anchor="end" class="pt">Shanghai</text><text x="-18" y="19" text-anchor="end" class="pc">CNSHA</text></g>
+          <g transform="translate(150,240)"><circle r="5" fill="#fff"/><circle r="9" fill="none" stroke="rgba(255,255,255,0.25)"/><text x="-18" y="4" text-anchor="end" class="pt">Port Klang</text><text x="-18" y="19" text-anchor="end" class="pc">MYPKG</text></g>
+          <g transform="translate(150,320)"><circle r="5" fill="#fff"/><circle r="9" fill="none" stroke="rgba(255,255,255,0.25)"/><text x="-18" y="4" text-anchor="end" class="pt">Jakarta</text><text x="-18" y="19" text-anchor="end" class="pc">IDJKT</text></g>
+        </g>
+
+        <!-- HUB -->
+        <g transform="translate(480,200)">
+          <circle r="26" fill="rgba(29,158,117,0.12)"/>
+          <circle r="26" fill="none" stroke="rgba(29,158,117,0.5)" stroke-width="1">
+            <animate attributeName="r" values="26;32;26" dur="3.2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="3.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="14" fill="#1D9E75"/>
+          <circle r="5" fill="#fff"/>
+          <text x="0" y="-40" text-anchor="middle" class="hub-t">COLOMBO DESK</text>
+          <text x="0" y="52" text-anchor="middle" class="pc">SOURCED · PRICED · NEGOTIATED</text>
+        </g>
+
+        <!-- DESTINATION NODES -->
+        <g>
+          <g transform="translate(810,80)"><circle r="5" fill="#9FE3C8"/><circle r="9" fill="none" stroke="rgba(159,227,200,0.3)"/><text x="18" y="4" class="pt">Rotterdam</text><text x="18" y="19" class="pc">NLRTM</text></g>
+          <g transform="translate(810,160)"><circle r="5" fill="#9FE3C8"/><circle r="9" fill="none" stroke="rgba(159,227,200,0.3)"/><text x="18" y="4" class="pt">Jebel Ali</text><text x="18" y="19" class="pc">AEJEA</text></g>
+          <g transform="translate(810,240)"><circle r="5" fill="#9FE3C8"/><circle r="9" fill="none" stroke="rgba(159,227,200,0.3)"/><text x="18" y="4" class="pt">Mersin</text><text x="18" y="19" class="pc">TRMER</text></g>
+          <g transform="translate(810,320)"><circle r="5" fill="#9FE3C8"/><circle r="9" fill="none" stroke="rgba(159,227,200,0.3)"/><text x="18" y="4" class="pt">Ulsan</text><text x="18" y="19" class="pc">KRUSN</text></g>
+        </g>
+      </svg>
+      </div>
+      <span class="swipe-hint code" style="display:none;color:rgba(255,255,255,0.35);padding:6px 24px 0;position:relative;z-index:1">← SWIPE THE BOARD →</span>
+      <div class="board-legend">
+        <span class="lg"><span class="sw"></span>Supply in, verified origins</span>
+        <span class="lg"><span class="sw dash"></span>Cargo out, buyer markets</span>
+        <span class="lg"><span class="sw node"></span>Port of record</span>
+        <span class="lg" style="margin-left:auto"><span class="code" style="color:rgba(255,255,255,0.35)">SCHEMATIC · NOT TO SCALE</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES LEDGER -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab">The desk</span>
+      <h2>What we run<br/><em>for you.</em></h2>
+      <p>A lean consultancy that executes. No account managers, no hand-offs, one desk across the full transaction.</p>
+    </div>
+    <div class="ledger rv">
+      <a class="row" href="services.html"><span class="code">SRC</span><h3>Global sourcing</h3><p>Suppliers identified, vetted, and shortlisted against your spec, quality standard, and target price.</p><span class="arr">→</span></a>
+      <a class="row" href="services.html"><span class="code">PRC</span><h3>Pricing intelligence</h3><p>AI-monitored benchmarks for your exact material, so you know the fair price before you negotiate.</p><span class="arr">→</span></a>
+      <a class="row" href="services.html"><span class="code">RFQ</span><h3>RFQ management</h3><p>Outreach, quote collection, comparison, and negotiation handled end to end, turned around in 24 hours.</p><span class="arr">→</span></a>
+      <a class="row" href="services.html"><span class="code">ENT</span><h3>Market entry</h3><p>Structured entry for suppliers reaching EU, Middle East, and Asia-Pacific buyers, from compliance to introductions.</p><span class="arr">→</span></a>
+      <a class="row" href="services.html"><span class="code">SCM</span><h3>Supply chain redesign</h3><p>Your sourcing structure audited and rebuilt as a resilient, cost-efficient, multi-origin strategy.</p><span class="arr">→</span></a>
+      <a class="row" href="services.html"><span class="code">INT</span><h3>Commodity intelligence</h3><p>Monthly briefings on price trends, supply risk signals, and our sourcing recommendation for your material.</p><span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT SPEC CARDS -->
+<section class="sec spec-sec" id="products">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="lab">Cargo manifest</span>
+      <h2>Nine materials,<br/><em>spec-sheet ready.</em></h2>
+      <p>Every product ships with a TDS, verified origin, and a live benchmark. Three of nine shown.</p>
+    </div>
+    <div class="spec-grid rv">
+      <article class="spec">
+        <div class="spec-top"><span class="tag">Biodiesel feedstock</span><span class="code">TDS-07</span></div>
+        <h3>UCO</h3>
+        <p class="fn">Used Cooking Oil · double-count under RED II</p>
+        <div class="srow"><span class="k">FFA content</span><span class="v">&lt; 5% pre-treated</span></div>
+        <div class="srow"><span class="k">Moisture</span><span class="v">&lt; 0.2%</span></div>
+        <div class="srow"><span class="k">Certification</span><span class="v">ISCC / RSB</span></div>
+        <div class="spec-foot"><span class="port">CNSHA</span><span class="port">INNSA</span><span class="port">MYPKG</span></div>
+      </article>
+      <article class="spec">
+        <div class="spec-top"><span class="tag">Biodiesel feedstock</span><span class="code">TDS-02</span></div>
+        <h3>Co-processed Oil</h3>
+        <p class="fn">UCO-based co-processing feedstock · ISCC EU</p>
+        <div class="srow"><span class="k">FFA (mg KOH/g)</span><span class="v">max 2</span></div>
+        <div class="srow"><span class="k">Sulfur (wppm)</span><span class="v">max 50</span></div>
+        <div class="srow"><span class="k">Metals ICP (wppm)</span><span class="v">max 10</span></div>
+        <div class="spec-foot"><span class="port">KRPUS</span><span class="port">KRUSN</span></div>
+      </article>
+      <article class="spec">
+        <div class="spec-top"><span class="tag">Oleochemical</span><span class="code">TDS-05</span></div>
+        <h3>Dimer Acid</h3>
+        <p class="fn">Dimerised Fatty Acid · resin and adhesive grade</p>
+        <div class="srow"><span class="k">Dimer content</span><span class="v">75 to 82%</span></div>
+        <div class="srow"><span class="k">Acid value</span><span class="v">190 to 198 mgKOH/g</span></div>
+        <div class="srow"><span class="k">Viscosity 25°C</span><span class="v">7000 to 8000 cp</span></div>
+        <div class="spec-foot"><span class="port">CNSHA</span><span class="port">CNNGB</span></div>
+      </article>
+      <article class="spec spec-more">
+        <a href="products.html">FAME · POME · MFA<br/>CG80 · SOFA · Monomer<em>Open the full manifest →</em></a>
+      </article>
+      <article class="spec spec-more" style="border-color:rgba(29,158,117,0.4);background:rgba(29,158,117,0.05)">
+        <a href="contact.html">Need something<br/>not listed?<em>We source beyond the manifest →</em></a>
+      </article>
+      <article class="spec" style="background:var(--deep);border-color:var(--deep)">
+        <div class="spec-top"><span class="tag" style="color:#9FE3C8;border-color:rgba(159,227,200,0.3);background:rgba(159,227,200,0.08)">Desk record</span><span class="code" style="color:rgba(255,255,255,0.35)">FY25</span></div>
+        <h3 style="color:#fff">The numbers</h3>
+        <p class="fn" style="color:rgba(255,255,255,0.4)">Across 10+ countries, 20+ verified suppliers</p>
+        <div class="srow" style="border-color:rgba(255,255,255,0.12)"><span class="k" style="color:rgba(255,255,255,0.45)">Volume traded</span><span class="v" style="color:#fff">1,000+ MT</span></div>
+        <div class="srow" style="border-color:rgba(255,255,255,0.12)"><span class="k" style="color:rgba(255,255,255,0.45)">Trade facilitated</span><span class="v" style="color:#fff">$10M+</span></div>
+        <div class="srow" style="border-color:rgba(255,255,255,0.12)"><span class="k" style="color:rgba(255,255,255,0.45)">Customers served</span><span class="v" style="color:#fff">50+</span></div>
+        <div class="spec-foot"><span class="port" style="background:rgba(255,255,255,0.08)">SINCE · LK · 10 YRS</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="track rv">
+      <span class="lab">RFQ tracking</span>
+      <h2>Your requirement, tracked like cargo</h2>
+      <div class="tline">
+        <div class="ts"><span class="pip"></span><span class="code">T+0H</span><h4>RFQ received</h4><p>Spec, quality requirement, target price, and timeline logged at the desk.</p></div>
+        <div class="ts"><span class="pip"></span><span class="code">T+24H</span><h4>Suppliers shortlisted</h4><p>AI-assisted search across the Asia network, vetted and priced against benchmark.</p></div>
+        <div class="ts"><span class="pip"></span><span class="code">T+72H</span><h4>Terms negotiated</h4><p>We negotiate with live market data and structure terms that protect your position.</p></div>
+        <div class="ts"><span class="pip"></span><span class="code">ETA</span><h4>Cargo delivered</h4><p>Documentation, logistics, and follow-through until the goods are received.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap rv">
+    <span class="lab">Open a corridor</span>
+    <h2>Send the spec.<br/><em>We'll send the price.</em></h2>
+    <p>Benchmark and shortlist back within 24 hours.</p>
+    <a href="contact.html" class="btn btn-g" style="font-size:16px;padding:17px 40px">Submit an RFQ ↗</a>
+    <span class="code"><a href="mailto:info@tradesoil.com" style="color:inherit;text-decoration:none">INFO@TRADESOIL.COM</a> · <a href="https://wa.me/94769093070" target="_blank" style="color:inherit;text-decoration:none">WA +94 76 909 3070</a> · LKCMB</span>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <a class="logo" href="index.html" style="font-size:19px">trad<em>e</em>soil</a>
+    <p>© 2026 Tradesoil International · Colombo, Sri Lanka</p>
+    <span class="code">DESIGN CONCEPT · THE CORRIDOR DESK</span>
+  </div>
+</footer>
+
+<script>
+/* ticker */
+(function(){
+  var items = [
+    ['FAME','CFR EU','$1,080/MT','u','▲ 2.1%'],
+    ['UCO','FOB CN · ISCC','$890/MT','d','▼ 0.8%'],
+    ['CG80','FOB ID','$310/MT','f','→ stable'],
+    ['POME','FOB MY · RED II ×2','$720/MT','u','▲ 1.4%'],
+    ['MFA','FOB KR','$840/MT','f','→ stable'],
+    ['DIMER','FOB CN','$1,650/MT','u','▲ 0.6%'],
+    ['CO-PRO','FOB KR · ISCC EU','$1,120/MT','u','▲ 1.1%']
+  ];
+  var html = items.map(function(i){
+    return '<span class="tk"><span class="code">'+i[0]+' · '+i[1]+'</span><b>'+i[2]+'</b><span class="'+i[3]+'">'+i[4]+'</span></span>';
+  }).join('');
+  document.getElementById('tick').innerHTML = html + html; /* duplicate for seamless loop */
+})();
+
+/* reveal on scroll */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){ e.classList.add('on'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
