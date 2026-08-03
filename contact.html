@@ -131,6 +131,9 @@
         <input type="text" name="volume" placeholder="Estimated volume (e.g. 50 MT/month)"/>
         <input type="text" name="destination" placeholder="Destination port / country"/>
         <textarea name="message" class="full" placeholder="Any additional details, grade, spec, payment terms, timeline..."></textarea>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+          <label>Leave this field empty<input type="text" name="contact_reference" tabindex="-1" autocomplete="off"/></label>
+        </div>
         <div class="full" style="text-align:center">
           <button type="submit" class="btn-cta" id="rfq-submit">Send enquiry &rarr;</button>
         </div>
@@ -163,7 +166,6 @@
   </div>
   <div class="fbot"><p>&copy; 2026 Tradesoil International &middot; Sri Lanka</p><p>info@tradesoil.com</p></div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 function toggleMenu(){var h=document.getElementById('hamburger');var m=document.getElementById('mobile-menu');h.classList.toggle('open');m.classList.toggle('open')}
 
@@ -205,15 +207,17 @@ function toggleMenu(){var h=document.getElementById('hamburger');var m=document.
   list.addEventListener('click', function(e){ e.stopPropagation(); });
 })();
 
-// ── Supabase form submission ──────────────────────────────────────────────
+// ── RFQ submission (hardened endpoint) ─────────────────────────────────────
 (function(){
-  var SB_URL = 'https://gsllwoyolnglbimjufjb.supabase.co';
-  var SB_KEY = 'sb_publishable_JzRTclMqjmhFoG-lEjJUBA_V191MEuI';
-  var client = supabase.createClient(SB_URL, SB_KEY);
+  var ENDPOINT = 'https://gsllwoyolnglbimjufjb.supabase.co/functions/v1';
+  var AK = 'sb_publishable_JzRTclMqjmhFoG-lEjJUBA_V191MEuI';
 
-  var form   = document.getElementById('rfq-form');
-  var btn    = document.getElementById('rfq-submit');
-  var msg    = document.getElementById('rfq-msg');
+  var form = document.getElementById('rfq-form');
+  var btn  = document.getElementById('rfq-submit');
+  var msg  = document.getElementById('rfq-msg');
+  var el   = form.elements;
+  var token = { ts: 0, sig: '' };
+  var sending = false;
 
   function showMsg(text, ok) {
     msg.textContent = text;
@@ -223,42 +227,56 @@ function toggleMenu(){var h=document.getElementById('hamburger');var m=document.
     msg.style.border = '1px solid ' + (ok ? 'rgba(29,158,117,0.3)' : 'rgba(220,60,60,0.3)');
   }
 
+  function loadToken() {
+    fetch(ENDPOINT + '/form-token', { method: 'POST', headers: { 'apikey': AK } })
+      .then(function(r){ return r.json(); })
+      .then(function(d){ token.ts = d.ts; token.sig = d.sig; })
+      .catch(function(){ /* submit will fail closed and show the fallback */ });
+  }
+  loadToken();
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
+    if (sending) return;              // block duplicate clicks
+    sending = true;
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    var data = {
-      name:        form.name.value.trim(),
-      company:     form.company.value.trim(),
-      email:       form.email.value.trim(),
-      product:     form.product.value,
-      volume:      form.volume.value.trim(),
-      destination: form.destination.value.trim(),
-      message:     form.message.value.trim()
+    var payload = {
+      name:              el['name'].value.trim(),
+      company:           el['company'].value.trim(),
+      email:             el['email'].value.trim(),
+      product:           el['product'].value,
+      volume:            el['volume'].value.trim(),
+      destination:       el['destination'].value.trim(),
+      message:           el['message'].value.trim(),
+      contact_reference: el['contact_reference'] ? el['contact_reference'].value : '',
+      ts:                token.ts,
+      sig:               token.sig
     };
 
-    // 1. Save to Supabase
-    var result = await client.from('contact_submissions').insert([data]);
-
-    if (result.error) {
+    try {
+      var res = await fetch(ENDPOINT + '/submit-rfq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'apikey': AK },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        showMsg('Enquiry received. We\'ll get back to you within 24 hours.', true);
+        form.reset();
+      } else if (res.status === 429) {
+        showMsg('Too many attempts. Please try again in a little while.', false);
+      } else {
+        showMsg('Something went wrong. Please email us directly at info@tradesoil.com', false);
+      }
+    } catch (err) {
       showMsg('Something went wrong. Please email us directly at info@tradesoil.com', false);
-      btn.disabled = false;
-      btn.textContent = 'Send enquiry →';
-      return;
     }
 
-    // 2. Trigger email via Edge Function
-    await fetch(SB_URL + '/functions/v1/notify-rfq', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
-      body: JSON.stringify({ record: data })
-    });
-
-    showMsg('Enquiry received. We\'ll get back to you within 24 hours.', true);
-    form.reset();
     btn.disabled = false;
     btn.textContent = 'Send enquiry →';
+    sending = false;
+    loadToken();                      // fresh token for the next submission
   });
 })();
 </script>
