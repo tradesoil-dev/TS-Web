@@ -1,0 +1,4 @@
+# Server-side Supabase Edge Function source.
+# These deploy to Supabase (Deno), NOT to the Vercel static site.
+# Excluded here so the .ts source is never served/downloadable from the website.
+supabase/
