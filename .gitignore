@@ -1,1 +1,7 @@
 supabase/.temp/
+
+# Local preview tooling
+.claude/
+
+# Full-size logo original (optimized expolead-logo.png is committed instead)
+expolead-logo.png.png
